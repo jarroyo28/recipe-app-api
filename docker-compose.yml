@@ -1,0 +1,18 @@
+version: "3.9"
+
+# app is the service that will be running our docker file
+# build context means we want to build the file in our current directory (root directory in our case)
+# ports: will map port 8000 on our local machine to port 8000 inside our docker container
+# volumes: maps directories from our system to our docker container, this allows syncs to happen from local to our container without having to rebuild the container
+# command: command used to run the service
+
+services:
+  app:
+    build:
+      context: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./app:/app
+    command: >
+      sh -c "python manage.py run server 0.0.0.0:8000"
