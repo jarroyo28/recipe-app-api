@@ -24,6 +24,9 @@ class PublicUserApiTests(TestCase):
     def setUp(self):
         self.client = APIClient()
 
+    ###########################
+    # TESTS FOR CREATE USER API#
+    ###########################
     def test_create_user_success(self):
         """Test creating a user is successful"""
         payload = {
@@ -65,6 +68,9 @@ class PublicUserApiTests(TestCase):
         ).exists()
         self.assertFalse(user_exists)
 
+    ######################
+    # TESTS FOR TOKEN API#
+    ######################
     def test_create_token_for_user(self):
         """Test generates token for valid credentials"""
         user_details = {
